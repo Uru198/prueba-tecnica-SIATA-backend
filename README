@@ -1,0 +1,25 @@
+para ejecutar la app debes tener instalado:
+
+1.datetime
+2.flask
+
+La base de datos en postgreSQL se debe llamar siata y el esquema es siatasiata contiene la tabla restaurante
+la cual contiene la columnas de identificacionUsuario (debe ser un serial), nombreRestaurante, valorMenu, fechaPago, valorPagado, Menu
+para ejecutar la app simplemente debes de correr python app.py en la consola 
+
+validacion de datos
+
+1. nombreRestaurante = solo recibira formato tipo string de lo contrario tendras un error 404
+2. identificacionUsuario = solo recibira formato tipo alfanúmerico 
+3. valorMenu = este indicara la cantidad de menus  que el usuario pidio
+4. fechaPago = la informacion debe ser una fecha actual y valida
+5. valorPagado = el valor pagado deberá estar entre 1 y 1000000 (1 millón) es decir se reciben pagos parciales.
+6. valorMenu  = cuando el usuario paga el menu tendra una respuesta 200 si el usuario abono al menu tendra otra respuesta
+con el valor restante el cual debe y cuando el usuario termina de pagar tendra la respuesta del pago total.
+7. fechaPago = si el usuario paga los dias pares tendra una respuesta que no se podra que solo puede pagar los dias impares
+
+En la app encuentras los siguientes endpoint:
+
+"/api/pagos" metodo GET: Se obtiene todos los datos del restaurante
+"/api/pagos/<int:restaurante_id>" metodo PATCH: Actualizar los pagos del restaurante recibe el id y el nuevo valor a pagar
+"/api/pagos" metodo POST: Se ingresa todos los valores del restaurante menos el id por que es generado automaticamente por la dase de datos
